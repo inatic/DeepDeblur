@@ -51,7 +51,7 @@ url="https://doi.org/10.1007/s11042-019-7251-y"
 
 ## Required Environment ##
 
- - [Ubuntu](https://www.ubuntu.com/) 16.04
+- [Ubuntu](https://www.ubuntu.com/) 16.04 or later
 
  - Python 2/3, in case you need the sufficient scientific computing packages, we recommend you to install [anaconda](https://www.anaconda.com/what-is-anaconda/).
 
@@ -61,7 +61,26 @@ url="https://doi.org/10.1007/s11042-019-7251-y"
 
  - Optional: if you need GPUs acceleration, please install [CUDA](https://developer.nvidia.com/cuda-toolkit) that the version requires >= 9.0
 
-   
+I tested with Python 2 and below library versions. Other versions might work, but when installing with Python 3 and all the latest versions I did not get the expected output from the test script (just a black image with artefacts at the top).
+
+```
+sudo apt install python-pip
+sudo pip2 install virtualenv
+
+# clone repository 
+git clone https://github.com/inatic/DeepDeblur/
+cd DeepDeblur
+
+# create virtual environment and add dependencies
+virtualenv -p /usr/bin/python2 .
+source bin/activate
+pip2 install opencv-python==4.2.0.32
+pip2 install keras==2.2.0
+pip2 install tensorflow==1.5.0
+
+# try with example image
+python2 test.py
+```
 
 ## Running The Demo ##
 - ##### Text Image Dataset Generation
